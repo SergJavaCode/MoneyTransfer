@@ -1,0 +1,11 @@
+{
+  "type": "object",
+  "properties": {
+    "operationId": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "operationId"
+  ]
+}

@@ -1,0 +1,316 @@
+{
+	"info": {
+		"_postman_id": "6ab14899-20fe-4cd9-959f-9db0954c0a30",
+		"name": "Transfer Money API",
+		"description": "Transfer Money API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "31890795",
+		"_collection_link": "https://winter-water-958016.postman.co/workspace/New-Team-Workspace~d4262254-6405-469a-a514-78ead3b0dc4f/collection/31890795-6ab14899-20fe-4cd9-959f-9db0954c0a30?action=share&source=collection_link&creator=31890795"
+	},
+	"item": [
+		{
+			"name": "transfer",
+			"item": [
+				{
+					"name": "Transfer money card to card",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"cardFromNumber\": \"23234532452345\",\n  \"cardFromValidTill\": \"2334\",\n  \"cardFromCVV\": \"246\",\n  \"cardToNumber\": \"23424523234234234\",\n  \"amount\": {\n    \"value\": 32,\n    \"currency\": \"usd\"\n  }\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5500/transfer",
+						"description": "Call to send money between cards"
+					},
+					"response": [
+						{
+							"name": "Success transfer",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cardFromNumber\": \"<string>\",\n  \"cardFromValidTill\": \"<string>\",\n  \"cardFromCVV\": \"<string>\",\n  \"cardToNumber\": \"<string>\",\n  \"amount\": {\n    \"value\": \"<integer>\",\n    \"currency\": \"<string>\"\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/transfer"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"operationId\": \"<string>\"\n}"
+						},
+						{
+							"name": "Error input data",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cardFromNumber\": \"<string>\",\n  \"cardFromValidTill\": \"<string>\",\n  \"cardFromCVV\": \"<string>\",\n  \"cardToNumber\": \"<string>\",\n  \"amount\": {\n    \"value\": \"<integer>\",\n    \"currency\": \"<string>\"\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/transfer"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"message\": \"<string>\",\n  \"id\": \"<integer>\"\n}"
+						},
+						{
+							"name": "Error transfer",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cardFromNumber\": \"<string>\",\n  \"cardFromValidTill\": \"<string>\",\n  \"cardFromCVV\": \"<string>\",\n  \"cardToNumber\": \"<string>\",\n  \"amount\": {\n    \"value\": \"<integer>\",\n    \"currency\": \"<string>\"\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/transfer"
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"message\": \"<string>\",\n  \"id\": \"<integer>\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "confirmOperation",
+			"item": [
+				{
+					"name": "Confirm operation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"operationId\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/confirmOperation",
+						"description": "Confirming operataion with code"
+					},
+					"response": [
+						{
+							"name": "Success confirmation",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"operationId\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/confirmOperation"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"operationId\": \"<string>\"\n}"
+						},
+						{
+							"name": "Error input data",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"operationId\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/confirmOperation"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"message\": \"<string>\",\n  \"id\": \"<integer>\"\n}"
+						},
+						{
+							"name": "Error confirmation",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"operationId\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/confirmOperation"
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"message\": \"<string>\",\n  \"id\": \"<integer>\"\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080/transfer"
+		}
+	]
+}
